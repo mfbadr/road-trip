@@ -1,17 +1,48 @@
 extends ../shared/template
 block content
-  h2 Home
+  .container
+      #banner.page-header
+        .row
+          .col-xs-12
+            h2#header Add a trip
   .panel.panel-default
     .panel-body
-      h4 Bootstrap Themes and Templates
-      ul
-        li: a(href='http://bootswatch.com/', target='_blank') http://bootswatch.com/
-        li: a(href='http://bootstrapzero.com/', target='_blank') http://bootstrapzero.com/
-        li: a(href='http://startbootstrap.com/', target='_blank') http://startbootstrap.com/
-        li: a(href='http://www.prepbootstrap.com/', target='_blank') http://www.prepbootstrap.com/
-        li: a(href='http://www.blacktie.co/', target='_blank') http://www.blacktie.co/
-        li: a(href='https://bootstrapmaster.com/', target='_blank') https://bootstrapmaster.com/
-        li: a(href='http://bootstrapstyler.com/', target='_blank') http://bootstrapstyler.com/
+      .row
+        form(role='form', method='post', action='/trips', enctype='multipart/form-data')
+          .col-xs-5
+            .form-group
+              label(for='tripName') Trip Name
+              input#tripName.form-control(type='text', placeholder='Vegas, baby!', name='name')
+            .form-group
+              label(for='cash') Cash
+              input#cash.form-control(type='number', placeholder='500', name='cash')
+            .form-group
+              label(for='origin') Origin
+              input#origin.form-control(type='text', placeholder='Nashville, TN', name='origin')
+            .form-group
+              label(for='destination') Destination
+              input#destination.form-control(type='text', placeholder='Las Vegas, NV', name='destination')
+            .form-group
+              label(for='carPhoto') Car Photo
+              input#carPhoto.form-control(type='file',  name='carPhoto', multiple=false)
+          .col-xs-5
+            .form-group
+              label(for='startDate') Start Date
+              input#startDate.form-control(type='date',  name='startDate')
+            .form-group
+              label(for='endDate') End Date
+              input#endDate.form-control(type='date',  name='endDate')
+            .form-group
+              label(for='mpg') MPG
+              input#mpg.form-control(type='number', placeholder='25', name='mpg')
+            .form-group
+              label(for='gasCost') Gas Cost / gal
+              input#gasCost.form-control(type='number', step='any', placeholder='3.99', name='mpg')
+            button.btn.btn-primary.btn-lg(type='submit') Submit
+
+
+
+
 
 block scripts
   script(src='/js/user/home.js')

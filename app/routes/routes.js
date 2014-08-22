@@ -4,6 +4,7 @@ var morgan         = require('morgan'),
     bodyParser     = require('body-parser'),
     methodOverride = require('express-method-override'),
     less           = require('less-middleware'),
+    trips          = require('../controllers/trips'),
     home           = require('../controllers/home');
 
 module.exports = function(app, express){
@@ -15,7 +16,7 @@ module.exports = function(app, express){
 
   app.get('/', home.index);
   //app.get('/trips', trips.index);
-  //app.get('/trips/new', trips.new);
+  app.get('/trips/new', trips.new);
   //app.post('/trips', trips.create);
   //app.get('/trips/:tripId', trips.show);
   //app.post('/trips/:tripId/stops', stops.create);
