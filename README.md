@@ -1,14 +1,14 @@
-## name of project
+## Road Trip
 ### Code Badges
-build status icon
-coverage status icon
+[![Build Status](https://travis-ci.org/mfbadr/road-trip.svg)](https://travis-ci.org/mfbadr/road-trip)
+[![Coverage Status](https://coveralls.io/repos/mfbadr/road-trip/badge.png)](https://coveralls.io/r/mfbadr/road-trip)
 
 ### About
-write a description about your project
+A calculator for road trips, include directions, stops, and events
 
 ### Models
 ```
-Model 1
+Trip
 prop-a
 prop-b
 .classMethod-c
@@ -16,7 +16,7 @@ prop-b
 ```
 
 ```
-Model 2
+Stop
 prop-e
 prop-f
 .classMethod-g
@@ -35,7 +35,7 @@ $ npm test
 ```
 
 ### Contributors
-- [Chyld Medford](https://github.com/chyld)
+- [Mikey Badr](https://github.com/mfbadr)
 
 ### License
 [MIT](LICENSE)
