@@ -9,7 +9,7 @@ block content
     .panel-body
       .row
         form(role='form', method='post', action='/trips', enctype='multipart/form-data')
-          .col-xs-5
+          .col-xs-12.col-sm-6
             .form-group
               label(for='tripName') Trip Name
               input#tripName.form-control(type='text', placeholder='Vegas, baby!', name='name')
@@ -30,7 +30,7 @@ block content
             .form-group
               label(for='carPhoto') Car Photo
               input#carPhoto.form-control(type='file',  name='carPhoto', multiple=false)
-          .col-xs-5
+          .col-xs-12.col-sm-6
             .form-group
               label(for='startDate') Start Date
               input#startDate.form-control(type='date',  name='startDate')
@@ -44,7 +44,7 @@ block content
               label(for='gasCost') Gas Cost / gal
               input#gasCost.form-control(type='number', step='any', placeholder='3.99', name='gasCost')
               input#distance.form-control(type='hidden', name='distance')
-            button.btn.btn-primary.btn-lg(type='submit') Submit
+            button.btn.btn-success.btn-lg(type='submit') Submit
 
 
 
