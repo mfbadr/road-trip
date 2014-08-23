@@ -17,7 +17,7 @@ module.exports = function(app, express){
   app.get('/', home.index);
   //app.get('/trips', trips.index);
   app.get('/trips/new', trips.new);
-  //app.post('/trips', trips.create);
+  app.post('/trips', trips.create);
   //app.get('/trips/:tripId', trips.show);
   //app.post('/trips/:tripId/stops', stops.create);
   //app.get('/trips/:tripId/stops/:stopId', stops.show);

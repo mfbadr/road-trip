@@ -19,9 +19,14 @@ block content
             .form-group
               label(for='origin') Origin
               input#origin.form-control(type='text', placeholder='Nashville, TN', name='origin')
+              input#originLat.form-control(type='hidden', name='origin')
+              input#originLng.form-control(type='hidden', name='origin')
+
             .form-group
               label(for='destination') Destination
               input#destination.form-control(type='text', placeholder='Las Vegas, NV', name='destination')
+              input#destinationLat.form-control(type='hidden', name='destination')
+              input#destinationLng.form-control(type='hidden', name='destination')
             .form-group
               label(for='carPhoto') Car Photo
               input#carPhoto.form-control(type='file',  name='carPhoto', multiple=false)
@@ -45,5 +50,5 @@ block content
 
 
 block scripts
-  script(src='/js/user/home.js')
+  script(src='/js/user/newTrip.js')
 
