@@ -4,7 +4,7 @@ var mp = require('multiparty');
 
 exports.index = function(req, res){
   //find all trips
-  res.render('/trips/index');
+  res.render('trips/index');
 };
 
 exports.new = function(req, res){
@@ -18,5 +18,6 @@ exports.create = function(req, res){
   form.parse(req, function(err, fields, files){
     console.log(fields);
     console.log(files);
+    res.redirect('/trips');
   });
 };

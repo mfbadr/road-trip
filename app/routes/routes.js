@@ -15,7 +15,7 @@ module.exports = function(app, express){
   app.use(methodOverride());
 
   app.get('/', home.index);
-  //app.get('/trips', trips.index);
+  app.get('/trips', trips.index);
   app.get('/trips/new', trips.new);
   app.post('/trips', trips.create);
   //app.get('/trips/:tripId', trips.show);
