@@ -22,11 +22,36 @@ function Trip(o){
   this.mpg = o.mpg[0] * 1;
   this.gasCost = o.gasCost[0] * 1;
   this.distance = o.distance[0] * 1;
-  this.photo = [];
+  this.photo = 0;
   //add num events, num photos, num stops all = 0
   this.numStops = 0;
   this.events = 0;
 }
+
+
+//Trip.create = function
+
+Trip.prototype.moveFile = function(files){
+  var baseDir = __dirname + '/../static', //absolute path to static directory
+      relDir  = '/img/' + this._id, //rel path to img from browset
+      absDir  = baseDir + relDir; // abs path to /img/id
+
+  fs.mkdirSync(absDir); //creates /img/id
+
+  var photos = files.photo.map(function(photo, index){
+    if(!photo.size){return;} //makes sure there is a photo
+
+    var ext = path.extname(photo.path), //pulls ext
+      name = index + ext, //eg 0.jpg
+      absPath = absDir + '/' + name, //abs path to file
+      relPath = relDir + '/' + name; // rel path to file
+
+  fs.renameSync(photo.path, absPath); //moves photo to dir //moves photo to dir
+  return relPath; //returns rel path to new arrap
+  });
+  photo = _.compact(photos);
+  this.photo = photos[0];
+};
 
 Object.defineProperty(Trip, 'collection', {
   get: function(){return global.mongodb.collection('trips');}
