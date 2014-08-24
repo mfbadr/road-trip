@@ -31,9 +31,7 @@ function Trip(o){
   this.events = 0;
 }
 
-
-//Trip.create = function
-
+//Trip.create
 Trip.prototype.moveFile = function(files){
   var baseDir = __dirname + '/../static', //absolute path to static directory
       relDir  = '/img/' + this._id, //rel path to img from browset
@@ -41,7 +39,7 @@ Trip.prototype.moveFile = function(files){
 
   fs.mkdirSync(absDir); //creates /img/id
 
-  var photos = files.photo.map(function(photo, index){
+  var photos = files.carPhoto.map(function(photo, index){
     if(!photo.size){return;} //makes sure there is a photo
 
     var ext = path.extname(photo.path), //pulls ext
