@@ -62,5 +62,17 @@ Trip.all = function(cb){
   Trip.collection.find().toArray(cb);
 };
 
+Trip.prototype.save = function(cb){
+  Trip.collection.save(this, cb);
+};
+
+Trip.findById = function(id, cb){
+  id = Mongo.ObjectID(id);
+  Trip.collection.findOne({_id:id}, function(err, trip){
+    cb(trip);
+    //add finding stops
+  });
+};
+
 module.exports = Trip;
 

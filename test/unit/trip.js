@@ -28,6 +28,7 @@ describe('Trip', function(){
 
   beforeEach(function(done){
     cp.execFile(__dirname + '/../scripts/clean-db.sh', [db], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
+      console.log(stdout, stderr);
       done();
     });
   });
@@ -75,6 +76,14 @@ describe('Trip', function(){
     it('should get all trips', function(done){
       Trip.all(function(err, trips){
         expect(trips).to.have.length(3);
+        done();
+      });
+    });
+  });
+  describe('.findById', function(){
+    it('should find by Id', function(done){
+      Trip.findById('000000000000000000000001', function(trip){
+        expect(trip.name).to.equal('My Road trip');
         done();
       });
     });
