@@ -51,7 +51,7 @@ describe('Trip', function(){
   describe('.all', function(){
     it('should get all trips', function(done){
       Trip.all(function(err, trips){
-        expect(trips).to.have.length(2);
+        expect(trips).to.have.length(3);
         done();
       });
     });

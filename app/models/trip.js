@@ -23,6 +23,9 @@ function Trip(o){
   this.gasCost = o.gasCost[0] * 1;
   this.distance = o.distance[0] * 1;
   this.photo = [];
+  //add num events, num photos, num stops all = 0
+  this.numStops = 0;
+  this.events = 0;
 }
 
 Object.defineProperty(Trip, 'collection', {
