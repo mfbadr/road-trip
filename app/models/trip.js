@@ -1,6 +1,9 @@
 'use strict';
 
-var Mongo = require('mongodb');
+var Mongo = require('mongodb'),
+    _     = require('lodash'),
+    fs    = require('fs'),
+    path  = require('path');
 
 function Trip(o){
   this._id = Mongo.ObjectID();
@@ -46,10 +49,10 @@ Trip.prototype.moveFile = function(files){
       absPath = absDir + '/' + name, //abs path to file
       relPath = relDir + '/' + name; // rel path to file
 
-  fs.renameSync(photo.path, absPath); //moves photo to dir //moves photo to dir
-  return relPath; //returns rel path to new arrap
+    fs.renameSync(photo.path, absPath); //moves photo to dir //moves photo to dir
+    return relPath; //returns rel path to new arrap
   });
-  photo = _.compact(photos);
+  photos = _.compact(photos);
   this.photo = photos[0];
 };
 
