@@ -1,10 +1,13 @@
 'use strict';
 
-var mp = require('multiparty');
+var mp = require('multiparty'),
+    Trip = require('../models/trip');
 
 exports.index = function(req, res){
   //find all trips
-  res.render('trips/index');
+  Trip.all(function(err, trips){
+    res.render('trips/index', {trips:trips});
+  });
 };
 
 exports.new = function(req, res){
@@ -16,8 +19,8 @@ exports.create = function(req, res){
   // could we just do mp.Form.parse(req... ?
   var form = new mp.Form();
   form.parse(req, function(err, fields, files){
-    console.log(fields);
-    console.log(files);
-    res.redirect('/trips');
+    Trip.create(fields, files, function(){
+      res.redirect('/trips');
+    });
   });
 };
