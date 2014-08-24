@@ -18,7 +18,8 @@ var expect    = require('chai').expect,
       mpg:['22'],
       gasCost:['4'],
       distance:['1000']
-    };
+    },
+    t;
 describe('Trip', function(){
   before(function(done){
     dbConnect(db, function(){
@@ -29,13 +30,13 @@ describe('Trip', function(){
   beforeEach(function(done){
     cp.execFile(__dirname + '/../scripts/clean-db.sh', [db], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
       console.log(stdout, stderr);
+      t = new Trip(obj);
       done();
     });
   });
 
   describe('constructor', function(){
     it('should create a new Trip object', function(){
-      var t = new Trip(obj);
       expect(t).to.be.instanceof(Trip);
       expect(t.name).to.equal('My roadtrip');
       expect(t.cash).to.equal(500);
@@ -57,20 +58,6 @@ describe('Trip', function(){
       expect(t.photo).to.equal(0);
     });
   });
-  //describe('#moveFile', function(){
-    //it('should add a correctly formatted relDir to photo field', function(done){
-      //var files = {carPhoto: [{
-        //fieldName: 'carPhoto',
-        //originalFilename: 'eyes.jpg',
-        //path: '/tmp/6581-14tee12.jpeg',
-        //size: 75201
-      //}]},
-      //t = new Trip(obj);
-      //console.log(files);
-      //t.moveFile(files);
-      //expect(t.photo).to.contain('/0.jpeg');
-    //});
-  //});
 
   describe('.all', function(){
     it('should get all trips', function(done){
@@ -84,7 +71,19 @@ describe('Trip', function(){
     it('should find by Id', function(done){
       Trip.findById('000000000000000000000001', function(trip){
         expect(trip.name).to.equal('My Road trip');
+        console.log(trip);
         done();
+      });
+    });
+  });
+  describe('.create', function(){
+    it('should create and save a trip', function(done){
+      Trip.create(obj, {carPhoto:[{path:''}]}, function(){
+        Trip.collection.findOne({name:'My roadtrip'}, function(err, trip){
+          console.log(trip);
+          expect(trip._id).to.exist;
+          done();
+        });
       });
     });
   });

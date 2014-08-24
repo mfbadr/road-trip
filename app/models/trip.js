@@ -66,6 +66,13 @@ Trip.prototype.save = function(cb){
   Trip.collection.save(this, cb);
 };
 
+Trip.create = function(fields, files, cb){
+  var t = new Trip(fields);
+  t.moveFile(files);
+  t.save(cb);
+};
+
+
 Trip.findById = function(id, cb){
   id = Mongo.ObjectID(id);
   Trip.collection.findOne({_id:id}, function(err, trip){
